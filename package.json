@@ -1,0 +1,20 @@
+{
+	"name": "posmotri_v_okno",
+	"version": "1.0.0",
+	"description": "project #2 YandexPracticum",
+	"main": "index.js",
+	"scripts": {
+		"checkPrettier": "prettier --check './**/*.{html,css,js}'",
+		"fixPrettier": "prettier --write './**/*.{html,css,js}'",
+		"checkLint": "stylelint \"./**/*.css\"",
+		"fixLint": "stylelint --fix \"./**/*.css\"",
+		"checkAll": "npm run checkPrettier && npm run checkLint",
+		"fixAll": "npm run fixPrettier && npm run fixLint"
+	},
+	"author": "Ivan Platunov",
+	"license": "ISC",
+	"devDependencies": {
+		"prettier": "^3.0.3",
+		"stylelint": "^15.10.3"
+	}
+}
