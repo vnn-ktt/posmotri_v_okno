@@ -1,3 +1,14 @@
+/* 
+1. Создать вертикальные отступы между элементами 
+(у всех, кроме последнего).
+
+.content__list-item{
+}
+.content__list-item:last-of-type {
+}  
+
+2. Размеры */
+
 *,
 *::before,
 *::after {
@@ -9,13 +20,14 @@ html {
 }
 
 .page {
-	inline-size: 1200px;
-	block-size: 100%;
 	margin: auto;
+	padding: 133px 30px;
 	color: #fff;
 	font-family: 'Fira Sans Condensed', sans-serif;
 	font-size: 18px;
 	background-color: #1b1919;
+	inline-size: 1200px;
+	block-size: 100%;
 }
 
 h1,
@@ -35,4 +47,230 @@ fieldset {
 ul,
 ol {
 	list-style: none;
+}
+
+input,
+button {
+	cursor: pointer;
+}
+
+.content {
+	display: grid;
+	column-gap: 30px;
+	grid-template: [row1-start] 'result content__details' auto [row1-end] / auto auto;
+}
+
+.result {
+	display: grid;
+	grid-area: result;
+	row-gap: 16px;
+	grid-template:
+		[row1-start] 'result__video-container' auto [row1-end]
+		[row2-start] 'search-form' auto [row2-end]
+		/ auto;
+}
+
+.result__video-container {
+	position: relative;
+	grid-area: result__video-container;
+	block-size: 386px;
+	inline-size: 711px;
+}
+
+.result__video {
+	position: absolute;
+	inset: 0;
+	block-size: 100%;
+	inline-size: 100%;
+}
+
+.search-form {
+	display: flex;
+	flex-flow: row nowrap;
+	grid-area: search-form;
+	justify-content: space-between;
+	align-items: flex-start;
+	inline-size: 711px;
+	block-size: 54px;
+}
+
+.search-form__fieldset-title {
+	font-family: 'Fira Sans Condensed';
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: 0;
+	text-align: left;
+}
+
+.search-form__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	border: none;
+}
+
+.search-form__label {
+	display: flex;
+	flex-direction: row;
+	inline-size: fit-content;
+}
+
+.search-form__textfield {
+	border-inline-start: none;
+	border-inline-end: none;
+	border-block-start: 1px solid #fff;
+	border-block-end: 1px solid #fff;
+	padding-inline-start: 0;
+	color: #fff;
+	font-family: 'Fira Sans Condensed';
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: 0;
+	text-align: left;
+	background: transparent;
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	min-inline-size: 225px;
+	max-inline-size: 225px;
+	min-block-size: 27px;
+	max-block-size: 27px;
+}
+
+.search-form__textfield::placeholder {
+	opacity: 0.7;
+	color: #fff;
+	font-family: 'Fira Sans Condensed';
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: 0;
+	text-align: left;
+}
+
+.search-form__checkbox-list {
+	display: flex;
+	flex-direction: row;
+	gap: 15px;
+}
+
+.search-form__pseudo-checkbox {
+	margin-inline-end: 5px;
+	border: 1px solid #fff;
+	inline-size: 19px;
+	block-size: 19px;
+}
+
+.button {
+	border: 1px solid #fff;
+	color: #fff;
+	font-family: 'Fira Sans Condensed';
+	font-weight: 700;
+	font-size: 18px;
+	line-height: 22px;
+	letter-spacing: 0;
+	text-align: center;
+	background: transparent;
+}
+
+.search-form__submit-button {
+	align-self: flex-end;
+	inline-size: 194px;
+	block-size: 34px;
+}
+
+.more-button {
+	inline-size: 399px;
+	block-size: 34px;
+}
+
+.content__details {
+	display: grid;
+	grid-area: content__details;
+	row-gap: 26px;
+	/* transform: translateY(-70px); */
+	grid-template:
+		[row1-start] 'title' auto [row1-end]
+		[row2-start] 'content__list' auto [row2-end]
+		/ auto;
+}
+
+.title {
+	grid-area: title;
+	font-family: Oswald;
+	font-weight: 700;
+	font-size: 75px;
+	line-height: 70px;
+	letter-spacing: 0;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.title > .content__accent {
+	color: #545050;
+}
+
+.content__list {
+	position: relative;
+	display: flex;
+	flex-flow: column nowrap;
+	grid-area: content__list;
+	gap: 30px;
+	overflow: hidden auto;
+	block-size: 298px;
+	inline-size: 399px;
+}
+
+.content__card-link {
+	color: #fff;
+	text-decoration: none;
+}
+
+.content__video-card-title {
+	font-family: Oswald;
+	font-weight: 700;
+	font-size: 30px;
+	line-height: 40px;
+	letter-spacing: 0;
+	text-align: left;
+	text-transform: uppercase;
+	text-overflow: ellipsis;
+}
+
+.content__video-card-description {
+	font-family: 'Fira Sans Condensed';
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 16px;
+	text-align: left;
+}
+
+.content__video-card {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.content__video-card-thumbnail {
+	min-block-size: 103px;
+	max-block-size: 103px;
+	min-inline-size: 194px;
+	max-inline-size: 194px;
+}
+
+.content__video-card-description-container {
+	inline-size: 100%;
+}
+
+.visually-hidden {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	inline-size: 1px;
+	block-size: 1px;
+	clip-path: inset(50%);
+	white-space: nowrap;
 }
