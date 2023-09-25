@@ -1,13 +1,7 @@
-/* 
-1. Создать вертикальные отступы между элементами 
-(у всех, кроме последнего).
-
-.content__list-item{
+:root {
+	--width-desktop: 1200px;
+	--font: 'Fira Sans Condensed';
 }
-.content__list-item:last-of-type {
-}  
-
-2. Размеры */
 
 *,
 *::before,
@@ -23,10 +17,10 @@ html {
 	margin: auto;
 	padding: 133px 30px;
 	color: #fff;
-	font-family: 'Fira Sans Condensed', sans-serif;
+	font-family: var(--font), sans-serif;
 	font-size: 18px;
 	background-color: #1b1919;
-	inline-size: 1200px;
+	inline-size: var(--width-desktop);
 	block-size: 100%;
 }
 
@@ -51,6 +45,7 @@ ol {
 
 input,
 button {
+	padding: 0;
 	cursor: pointer;
 }
 
@@ -63,23 +58,24 @@ button {
 .result {
 	display: grid;
 	grid-area: result;
-	row-gap: 16px;
+	row-gap: 14px;
 	grid-template:
-		[row1-start] 'result__video-container' auto [row1-end]
-		[row2-start] 'search-form' auto [row2-end]
-		/ auto;
+		[row1-start] 'result__video-container' 431px [row1-end]
+		[row2-start] 'search-form' 54px [row2-end]
+		/ 711px;
 }
 
 .result__video-container {
 	position: relative;
 	grid-area: result__video-container;
-	block-size: 386px;
+	margin-block-start: 67px;
 	inline-size: 711px;
+	block-size: 364px;
 }
 
 .result__video {
-	position: absolute;
-	inset: 0;
+	object-fit: cover;
+	object-position: center;
 	block-size: 100%;
 	inline-size: 100%;
 }
@@ -95,18 +91,13 @@ button {
 }
 
 .search-form__fieldset-title {
-	font-family: 'Fira Sans Condensed';
+	margin-block-end: 5px;
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 22px;
-	letter-spacing: 0;
-	text-align: left;
 }
 
 .search-form__fieldset {
-	display: flex;
-	flex-direction: column;
-	gap: 5px;
 	border: none;
 }
 
@@ -117,37 +108,32 @@ button {
 }
 
 .search-form__textfield {
-	border-inline-start: none;
-	border-inline-end: none;
-	border-block-start: 1px solid #fff;
-	border-block-end: 1px solid #fff;
-	padding-inline-start: 0;
+	border-inline: none;
+	border-block: 1px solid #fff;
 	color: #fff;
-	font-family: 'Fira Sans Condensed';
+	font-family: var(--font);
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 22px;
-	letter-spacing: 0;
-	text-align: left;
 	background: transparent;
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-	min-inline-size: 225px;
-	max-inline-size: 225px;
-	min-block-size: 27px;
-	max-block-size: 27px;
+	inline-size: 225px;
+	block-size: 27px;
 }
 
 .search-form__textfield::placeholder {
 	opacity: 0.7;
 	color: #fff;
-	font-family: 'Fira Sans Condensed';
+	font-family: var(--font);
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 22px;
-	letter-spacing: 0;
-	text-align: left;
+}
+
+.search-form__textfield:has(:focus-visible) {
+	outline: 1px solid #fff;
 }
 
 .search-form__checkbox-list {
@@ -155,6 +141,17 @@ button {
 	flex-direction: row;
 	gap: 15px;
 }
+
+/* .search-form__label-text:has(:focus-visible) {
+	outline: 1px solid #fff;
+}
+
+.search-form__checkbox:checked + span::before {
+	content: '';
+	inline-size: 15px;
+	block-size: 15px;
+	background-color: #fff;
+} */
 
 .search-form__pseudo-checkbox {
 	margin-inline-end: 5px;
@@ -166,12 +163,10 @@ button {
 .button {
 	border: 1px solid #fff;
 	color: #fff;
-	font-family: 'Fira Sans Condensed';
+	font-family: var(--font);
 	font-weight: 700;
 	font-size: 18px;
 	line-height: 22px;
-	letter-spacing: 0;
-	text-align: center;
 	background: transparent;
 }
 
@@ -181,20 +176,27 @@ button {
 	block-size: 34px;
 }
 
+.search-form__submit-button:active {
+	background-color: #545050;
+}
+
 .more-button {
 	inline-size: 399px;
 	block-size: 34px;
 }
 
+.more-button:active {
+	background-color: #545050;
+}
+
 .content__details {
 	display: grid;
 	grid-area: content__details;
-	row-gap: 26px;
-	/* transform: translateY(-70px); */
+	row-gap: 5px;
 	grid-template:
-		[row1-start] 'title' auto [row1-end]
-		[row2-start] 'content__list' auto [row2-end]
-		/ auto;
+		[row1-start] 'title' 210px [row1-end]
+		[row2-start] 'content__list' 284px [row2-end]
+		/ 399px;
 }
 
 .title {
@@ -203,9 +205,8 @@ button {
 	font-weight: 700;
 	font-size: 75px;
 	line-height: 70px;
-	letter-spacing: 0;
-	text-align: left;
 	text-transform: uppercase;
+	transform: translateY(-10px);
 }
 
 .title > .content__accent {
@@ -217,10 +218,8 @@ button {
 	display: flex;
 	flex-flow: column nowrap;
 	grid-area: content__list;
-	gap: 30px;
+	row-gap: 30px;
 	overflow: hidden auto;
-	block-size: 298px;
-	inline-size: 399px;
 }
 
 .content__card-link {
@@ -228,23 +227,13 @@ button {
 	text-decoration: none;
 }
 
-.content__video-card-title {
-	font-family: Oswald;
-	font-weight: 700;
-	font-size: 30px;
-	line-height: 40px;
-	letter-spacing: 0;
-	text-align: left;
-	text-transform: uppercase;
-	text-overflow: ellipsis;
+.content__card-link:visited {
+	color: #fff;
+	text-decoration: none;
 }
 
-.content__video-card-description {
-	font-family: 'Fira Sans Condensed';
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 16px;
-	text-align: left;
+.content__card-link:has(:focus-visible) {
+	outline: 1px solid #fff;
 }
 
 .content__video-card {
@@ -252,6 +241,28 @@ button {
 	flex-flow: row nowrap;
 	justify-content: space-between;
 	align-items: flex-start;
+}
+
+/* .content__card-link:active > .content__video-card {
+	background: #545050;
+} 
+какая то хуйня на js
+*/
+
+.content__video-card-title {
+	margin-block-start: 2px;
+	font-family: Oswald;
+	font-weight: 700;
+	font-size: 27px;
+	line-height: 35px;
+	text-transform: uppercase;
+}
+
+.content__video-card-description {
+	font-family: var(--font);
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 16px;
 }
 
 .content__video-card-thumbnail {
