@@ -1,15 +1,7 @@
-/*
-Переменные
-***/
-
 :root {
 	--width-desktop: 1200px;
 	--font: 'Fira Sans Condensed';
 }
-
-/*
-Сброс станадартных стилей и общие стили
-***/
 
 *,
 *::before,
@@ -18,15 +10,17 @@
 }
 
 html {
+	font-size: 18px;
 	block-size: 100%;
 }
 
 .page {
 	margin: auto;
-	padding: 126px 30px;
+	padding: 140px 30px;
 	color: #fff;
 	font-family: var(--font), sans-serif;
-	font-size: 18px;
+	font-weight: 400;
+	font-size: 1rem;
 	background-color: #1b1919;
 	inline-size: var(--width-desktop);
 	block-size: 100%;
@@ -51,10 +45,6 @@ ol {
 	list-style: none;
 }
 
-input {
-	padding: 0;
-}
-
 .button {
 	border: 1px solid #fff;
 	padding: 0;
@@ -76,10 +66,6 @@ input {
 	white-space: nowrap;
 }
 
-/*
-Сетки
-***/
-
 .content {
 	display: grid;
 	column-gap: 30px;
@@ -89,52 +75,32 @@ input {
 .result {
 	display: grid;
 	grid-area: result;
-	row-gap: 5px;
+	row-gap: 15px;
 	grid-template:
-		[row1-start] 'result__video-container' auto [row1-end]
+		[row1-start] 'result__video-container' 458px [row1-end]
 		[row2-start] 'search-form' auto [row2-end]
 		/ 711px;
 }
 
-.content__details {
-	display: grid;
-	grid-area: content__details;
-	row-gap: 5px;
-	grid-template:
-		[row1-start] 'title' auto [row1-end]
-		[row2-start] 'content__list' auto [row2-end]
-		/ 399px;
-}
-
-/*
-Видео
-***/
-
 .result__video-container {
-	display: flex;
-	align-items: flex-end;
-	inline-size: 711px;
-	block-size: 438px;
 	position: relative;
 	grid-area: result__video-container;
+	align-self: flex-end;
+	inline-size: 711px;
+	block-size: 384px;
 }
 
 .result__video {
-	inline-size: 100%;
-	block-size: 364px;
 	object-fit: cover;
 	object-position: center;
+	inline-size: 100%;
+	block-size: 100%;
 }
-
-/*
-Форма
-***/
 
 .search-form {
 	display: flex;
 	flex-flow: row nowrap;
 	grid-area: search-form;
-	align-self: flex-end;
 	justify-content: space-between;
 	align-items: flex-start;
 	inline-size: 711px;
@@ -163,31 +129,28 @@ input {
 }
 
 .search-form__label:has(:focus-visible) {
-	outline-offset: 2px;
 	outline: 1px solid #fff;
+	outline-offset: 2px;
 }
 
-/*
-Форма, текстовое поле
-***/
-
 .search-form__textfield {
+	border-inline: none;
+	border-block: 1px solid #fff;
+	padding: 0;
+	color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
+	line-height: 27px;
+	background: transparent;
 	appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	inline-size: 225px;
-	border-inline: none;
-	border-block: 1px solid #fff;
-	color: #fff;
-	font-family: var(--font);
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 27px;
-	background: transparent;
 }
 
 .search-form__textfield:active {
-	border-inline: 1px solid #fff;
+	border: none;
 }
 
 .search-form__textfield:hover {
@@ -202,10 +165,6 @@ input {
 	opacity: 0.7;
 }
 
-/*
-Форма, чекбоксы
-***/
-
 .search-form__checkbox-list {
 	display: flex;
 	flex-direction: row;
@@ -213,11 +172,11 @@ input {
 }
 
 .search-form__pseudo-checkbox {
+	margin-inline-end: 5px;
+	margin-block-start: 1px;
+	border: 1px solid #fff;
 	inline-size: 19px;
 	block-size: 19px;
-	margin-block-start: 1px;
-	margin-inline-end: 5px;
-	border: 1px solid #fff;
 }
 
 .search-form__label:has(.search-form__checkbox):hover {
@@ -228,18 +187,15 @@ input {
 
 .search-form__checkbox:checked + .search-form__pseudo-checkbox {
 	padding: 1px;
-	background-clip: content-box;
 	background-color: #fff;
+	background-clip: content-box;
 }
 
-/*
-Форма, кнопочка
-***/
-
 .search-form__submit-button {
+	align-self: flex-end;
+	margin-block-end: 3px;
 	inline-size: 194px;
 	block-size: 34px;
-	align-self: flex-end;
 }
 
 .search-form__submit-button:active {
@@ -257,13 +213,19 @@ input {
 }
 
 .search-form__submit-button:focus-visible {
-	outline-offset: 2px;
 	outline: 1px solid #fff;
+	outline-offset: 2px;
 }
 
-/*
-Контент, титл
-***/
+.content__details {
+	display: grid;
+	grid-area: content__details;
+	row-gap: 24px;
+	grid-template:
+		[row1-start] 'title' auto [row1-end]
+		[row2-start] 'content__list' auto [row2-end]
+		/ 399px;
+}
 
 .title {
 	grid-area: title;
@@ -279,19 +241,15 @@ input {
 	color: #545050;
 }
 
-/*
-Контент, лист, ссылки
-***/
-
 .content__list {
 	position: relative;
 	display: flex;
 	flex-flow: column nowrap;
+	grid-area: content__list;
+	row-gap: 33px;
+	overflow: hidden auto;
 	inline-size: 399px;
 	block-size: 298px;
-	grid-area: content__list;
-	row-gap: 22px;
-	overflow: hidden auto;
 }
 
 .content__card-link {
@@ -325,10 +283,6 @@ input {
 	text-decoration: none;
 }
 
-/*
-Контент, карточка
-***/
-
 .content__video-card {
 	display: flex;
 	flex-flow: row nowrap;
@@ -337,7 +291,8 @@ input {
 }
 
 .content__video-card-title {
-	margin-block-start: 2px;
+	margin-block-end: 6px;
+	color: #fff;
 	font-family: Oswald;
 	font-weight: 700;
 	font-size: 27px;
@@ -346,13 +301,16 @@ input {
 }
 
 .content__video-card-description {
-	font-family: var(--font);
-	font-weight: 400;
-	font-size: 18px;
+	color: inherit;
+	font-family: inherit;
+	font-weight: inherit;
+	font-size: inherit;
 	line-height: 16px;
 }
 
 .content__video-card-thumbnail {
+	object-fit: cover;
+	object-position: center;
 	min-block-size: 100px;
 	max-block-size: 100px;
 	min-inline-size: 194px;
@@ -363,14 +321,10 @@ input {
 	inline-size: 100%;
 }
 
-/*
-Контент, кнопка
-***/
-
 .more-button {
-	inline-size: calc(100% - 3px);
+	margin: 3px;
+	inline-size: calc(100% - 3px * 2);
 	block-size: 34px;
-	margin: 3px 3px 0;
 }
 
 .more-button:active {
@@ -388,6 +342,6 @@ input {
 }
 
 .more-button:focus-visible {
-	outline-offset: 2px;
 	outline: 1px solid #fff;
+	outline-offset: 2px;
 }
